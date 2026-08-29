@@ -22,9 +22,23 @@ Build 0.2.2026
 - Mostra "kernel" em linha nova (kernel em execução)
 - Tela não é limpa em nenhum momento
 
+Build 0.3.2026
+
+- Agora carrega 10 setores (ao invés de 5)
+- Kernel em setores 1-5 (carregado em 0x8000)
+- Drivers em setores 6-10 (carregados em 0xA000 video,dr (driver de video)
+- Compilado como video.dr
+- Define modo gráfico 320x200 pixels
+- Função `inicializar_video` que o kernel chama
+- Retorna para kernel após execução
+- Kenel carrega driver de vídeo de 0xA000 usando `call`
+- Executa inicialização de vídeo
+- Escreve "video.dr" na terceira linha
+- Mantém controle total do sistema
+
 Como Compilar e Rodar
 - Compilação via NASM
-- Geração de imagem de disco (512 MB)
+- Geração de imagem de disco (512 MB Esse tamanho é usado pelo desenvolvimento)
 - Integração com QEMU
 - Build com Ctrl+Shift+B (tasks.json)
 
