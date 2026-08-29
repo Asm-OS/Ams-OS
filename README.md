@@ -33,8 +33,7 @@ Build 0.3.2026
 - Retorna para kernel após execução
 - Kenel carrega driver de vídeo de 0xA000 usando `call`
 - Executa inicialização de vídeo
-- Escreve "video.dr" na terceira linha
-- Mantém controle total do sistema
+- Escreve "video.dr" quando retorna para o kernel
 
 Como Compilar e Rodar
 - Compilação via NASM
