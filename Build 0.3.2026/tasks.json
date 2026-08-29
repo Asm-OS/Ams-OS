@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar e Rodar Asm OS",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "nasm -f bin \"${workspaceFolder}/inicio.asm\" -o \"${workspaceFolder}/inicio.bin\" && nasm -f bin \"${workspaceFolder}/kernel.asm\" -o \"${workspaceFolder}/kernel\" && nasm -f bin \"${workspaceFolder}/video.asm\" -o \"${workspaceFolder}/video.dr\" && dd if=/dev/zero of=\"${workspaceFolder}/disco.img\" bs=512 count=1048576 2>/dev/null && dd if=\"${workspaceFolder}/inicio.bin\" of=\"${workspaceFolder}/disco.img\" bs=512 count=1 conv=notrunc 2>/dev/null && dd if=\"${workspaceFolder}/kernel\" of=\"${workspaceFolder}/disco.img\" bs=512 seek=1 conv=notrunc 2>/dev/null && dd if=\"${workspaceFolder}/video.dr\" of=\"${workspaceFolder}/disco.img\" bs=512 seek=6 conv=notrunc 2>/dev/null && qemu-system-x86_64 -fda \"${workspaceFolder}/disco.img\" -boot a -m 32 -display gtk"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        }
+    ]
+}
